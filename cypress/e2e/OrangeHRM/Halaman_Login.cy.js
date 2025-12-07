@@ -52,7 +52,7 @@ describe('template spec', () => {
 
     it('URL Icon Youtube', () => {
         cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-        cy.get('a[href="https://twitter.com/orangehrm?lang=en"] svg').click();
+        cy.get('a[href="https://www.youtube.com/c/OrangeHRMInc"] svg').click();
     })
 
     it('URL Text OrangeHRM, Inc', () => {
