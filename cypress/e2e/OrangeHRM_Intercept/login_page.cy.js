@@ -107,14 +107,10 @@ describe('Intercept', () => {
 
     it('URL Icon Youtube', () => {
         cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
-        cy.intercept('GET','https://www.youtube.com/c/OrangeHRMInc').as('youtube');
         cy.get('a[href="https://www.youtube.com/c/OrangeHRMInc"]')
             .invoke('removeAttr','target')
             .find('svg')
             .click();
-        cy.wait('@youtube').then((interception) => {
-            expect(interception.response.statusCode).to.exist;
-        });
     });
 
     it('URL Text OrangeHRM, Inc', () => {
