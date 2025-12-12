@@ -108,7 +108,7 @@ describe('Intercept', () => {
     it('URL Icon Youtube', () => {
         cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
         cy.get('a[href="https://www.youtube.com/c/OrangeHRMInc"]')
-            .invoke('removeAttr','target')
+            .invoke('removeAttr')
             .find('svg')
             .click();
     });
