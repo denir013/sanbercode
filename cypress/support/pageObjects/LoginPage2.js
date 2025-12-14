@@ -9,6 +9,10 @@ class LoginPage {
         youtube: 'https://www.youtube.com/c/OrangeHRMInc'
     };
 
+    forgotPasswordURL = '**/web/index.php/auth/requestPasswordResetCode';
+                        
+    forgotPasswordReset = '/web/index.php/auth/sendPasswordReset';
+    
     elements = {
         username: () => cy.get('[name="username"]'),
         password: () => cy.get('[name="password"]'),
@@ -17,8 +21,11 @@ class LoginPage {
         invalidAlert: () => cy.get('.oxd-alert-content-text'),
         forgotPasswordLink: () => cy.get('.orangehrm-login-forgot-header'),
         resetBtn: () => cy.get('.orangehrm-forgot-password-button--reset'),
-        socialIcon: (url) => cy.get(`a[href="${url}"]`).invoke('removeAttr', 'target').find('svg'),
+        cancelBtn: () => cy.get('.orangehrm-forgot-password-button--cancel'),
+        socialIcon: (url) => cy.get(`a[href="${url}"]`).invoke('removeAttr','target').find('svg'),
+        socialIconYT: (url) => cy.get(`a[href="${url}"]`).invoke('removeAttr').find('svg'),
         footerOrangeHRMText: () => cy.contains('a', 'OrangeHRM'),
+        
     };
 
     visit() {
@@ -29,6 +36,20 @@ class LoginPage {
         if (username) this.elements.username().type(username);
         if (password) this.elements.password().type(password);
         this.elements.loginBtn().click();
+    }
+
+    
+
+    fillUsername(username) {
+        cy.get('input[name="username"]').type(username)
+    }
+
+    fillPassword(password) {
+        cy.get('input[name="password"]').type(password)
+    }
+
+    submit() {
+        cy.get('button[type="submit"]').click()
     }
 }
 
